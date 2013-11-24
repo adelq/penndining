@@ -1,8 +1,3 @@
-var dinner_start = moment('17:00', 'HH:mm');
-var dinner_end = moment('19:30', 'HH:mm');
-
-moment().isBefore(dinner_end);
-
 function Hours(startTime, endTime) {
     this.start = startTime;
     this.end = endTime;
@@ -12,17 +7,98 @@ function Hours(startTime, endTime) {
     }
 }
 
-function Day(meals) {
-    this.meals = meals;
-
-function Hall(name, days) {
-    this.name = name;
-    this.weekday = Day(days[0]);
-    this.fri = Day(days[1]);
-    this.sat = Day(days[2]);
-    this.sun = Day(days[3]);
-
-    
+commons = {
+  "name": "1920 Commons",
+  "weekdays": {
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "21:00"
+    }
+  },
+  "friday": {
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "21:00"
+    }
+  },
+  "saturday": {
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "21:00"
+    }
+  },
+  "sunday": {
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "21:00"
+    }
+  }
 }
 
-commons = new Hall("commons");
+hill = {
+  "name": "Hill",
+  "weekdays": {
+    "breakfast": {
+        "start": "7:30",
+        "end": "10:00"
+    },
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "20:00"
+    }
+  },
+  "friday": {
+    "breakfast": {
+        "start": "7:30",
+        "end": "10:00"
+    },
+    "lunch": {
+        "start": "11:00",
+        "end": "14:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "19:00"
+    }
+  },
+  "saturday": {
+    "brunch": {
+        "start": "11:00",
+        "end": "15:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "19:00"
+    }
+  },
+  "sunday": {
+    "brunch": {
+        "start": "11:00",
+        "end": "15:00"
+    },
+    "dinner": {
+        "start": "17:00",
+        "end": "20:00"
+    }
+  }
+}
