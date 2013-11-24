@@ -42,15 +42,15 @@ commons = {
   ],
   "friday": [
     new Hours("Lunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Dinner", "17:00", "19:30")
   ],
   "saturday": [
-    new Hours("Brunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "19:00")
   ],
   "sunday": [
-    new Hours("Brunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "20:00")
   ]
 }
 

@@ -4,7 +4,7 @@ function Hours(name, startTime, endTime) {
     this.end = moment(endTime, 'HH:mm');
 
     this.isOpen = function() {
-	   return (moment().isAfter(this.start) && moment().isBefore(this.end));
+     return (moment().isAfter(this.start) && moment().isBefore(this.end));
     }
 
     this.open = function() {
@@ -42,15 +42,15 @@ commons = {
   ],
   "friday": [
     new Hours("Lunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Dinner", "17:00", "19:30")
   ],
   "saturday": [
-    new Hours("Brunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "19:00")
   ],
   "sunday": [
-    new Hours("Brunch", "11:00", "14:00"),
-    new Hours("Dinner", "17:00", "21:00")
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "20:00")
   ]
 }
 
@@ -100,7 +100,7 @@ function check() {
             $('#commons-status').addClass('label-success').removeClass('label-danger').removeClass('label-warning').text('Open');
         }
     } else {
-        $('#commons').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
+        $('#commons-status').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
     }
 
     if (isOpen(hill)) {
