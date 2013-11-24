@@ -30,18 +30,22 @@ def veg_listify(n):
 	return output_list
 
 def get_all_meals(url):
+	"""
+	Prints out a dictionary of all the meals.
+	"""
+	# Opens the source of the url and soupifies it		
 	url = urllib2.urlopen(url)
 	content = url.read()
 	soup = BeautifulSoup(content)
-	# print soup
+	# Finds all tags with h4 (LUNCH, DINNER, etc)
 	headers_raw = soup.findAll("h4")
-	# print headers
-	table_content = soup.findAll("table", {"class": "contentpaneopen"})
-	# content = table_content[1].findAll("li")
+	# Creates master vegetarian dictionary
 	all_dict = {}
+	# For loop to create veg_dict
 	for raw_header in headers_raw:
 		header_title = raw_header.getText()
 		temp = {}
+		# "strong" finds all the categories
 		for category in raw_header.next_sibling.findAll("strong"):
 			categoryText = category.getText()
 			temp[categoryText] = listify(category)
@@ -49,27 +53,29 @@ def get_all_meals(url):
 	return all_dict
 
 def get_veg_meals(url):
+	"""
+	Prints out a dictionary of all the vegetarian meals.
+	"""
+
+	# Opens the source of the url and soupifies it
 	url = urllib2.urlopen(url)
 	content = url.read()
 	soup = BeautifulSoup(content)
-	# print soup
+	# Finds all tags with h4 (LUNCH, DINNER, etc)
 	headers_raw = soup.findAll("h4")
-	# print headers
-	table_content = soup.findAll("table", {"class": "contentpaneopen"})
-	# content = table_content[1].findAll("li")
+	# Creates master vegetarian dictionary
 	veg_dict = {}
+	# For loop to create veg_dict
 	for raw_header in headers_raw:
 		header_title = raw_header.getText()
 		temp = {}
+		# "strong" finds all the categories
 		for category in raw_header.next_sibling.findAll("strong"):
 			categoryText = category.getText()
 			temp[categoryText] = veg_listify(category)
 		veg_dict[header_title] = temp
 
 # print all_dict
-pp = pprint.PrettyPrinter(indent = 2)
+pp = pprint.PrettyPrinter(indent = 4)
 pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
 
-# print all_dict["BRUNCH"]["Pizza"]
-
-# pp.pprint(veg_dict) "http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"
