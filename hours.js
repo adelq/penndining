@@ -1,104 +1,79 @@
-function Hours(startTime, endTime) {
-    this.start = startTime;
-    this.end = endTime;
+function Hours(name, startTime, endTime) {
+    this.name = name;
+    this.start = moment(startTime, 'HH:mm');
+    this.end = moment(endTime, 'HH:mm');
 
     this.isOpen = function() {
-	return (moment().isAfter(end) && moment().isBefore(end))
+	   return (moment().isAfter(this.start) && moment().isBefore(this.end))
     }
 }
 
 commons = {
   "name": "1920 Commons",
-  "weekdays": {
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "21:00"
-    }
-  },
-  "friday": {
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "21:00"
-    }
-  },
-  "saturday": {
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "21:00"
-    }
-  },
-  "sunday": {
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "21:00"
-    }
-  }
+  "weekdays": [
+    new Hours("Lunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "21:00")
+  ],
+  "friday": [
+    new Hours("Lunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "21:00")
+  ],
+  "saturday": [
+    new Hours("Brunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "21:00")
+  ],
+  "sunday": [
+    new Hours("Brunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "21:00")
+  ]
 }
 
 hill = {
   "name": "Hill",
-  "weekdays": {
-    "breakfast": {
-        "start": "7:30",
-        "end": "10:00"
-    },
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "20:00"
+  "weekdays": [
+    new Hours("Breakfast", "07:30", "10:00"),
+    new Hours("Lunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "20:00")
+  ],
+  "friday": [
+    new Hours("Breakfast", "07:30", "10:00"),
+    new Hours("Lunch", "11:00", "14:00"),
+    new Hours("Dinner", "17:00", "19:00")
+  ],
+  "saturday": [
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "19:00")
+  ],
+  "sunday": [
+    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Dinner", "17:00", "20:00")
+  ]
+}
+
+commons_is_open = false;
+
+if (isOpen(commons)) {
+    $('#commons').addClass('label-success').removeClass('label-danger').text('Open');
+}
+
+function openDay(day) {
+    var open = false;
+    for (var i = 0; i<day.length; i++) {
+        open = (open || day[i].isOpen())
     }
-  },
-  "friday": {
-    "breakfast": {
-        "start": "7:30",
-        "end": "10:00"
-    },
-    "lunch": {
-        "start": "11:00",
-        "end": "14:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "19:00"
+    return open
+}
+
+function isOpen(hall) {
+    var day = moment().day();
+    if (day === 5) {
+        var meals = hall.friday;
+    } else if (day === 6){
+        var meals = hall.saturday;
+    } else if (day === 0) {
+        var meals = hall.sunday;
+        console.log(openDay(hall.sunday));
+    } else {
+        var meals = hall.weekdays;
     }
-  },
-  "saturday": {
-    "brunch": {
-        "start": "11:00",
-        "end": "15:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "19:00"
-    }
-  },
-  "sunday": {
-    "brunch": {
-        "start": "11:00",
-        "end": "15:00"
-    },
-    "dinner": {
-        "start": "17:00",
-        "end": "20:00"
-    }
-  }
 }
