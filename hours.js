@@ -50,6 +50,22 @@ hill = {
   ]
 }
 
+mcclelland = {
+  "name": "McClelland",
+  "weekdays": [
+    new Hours("Meal", "08:00", "20:00")
+  ],
+  "friday": [
+    new Hours("Meal", "08:00", "20:00")
+  ],
+  "saturday": [
+    new Hours("Meal", "12:00", "14:00")
+  ],
+  "sunday": [
+    new Hours("Meal", "12:00", "14:00")
+  ]
+}
+
 function check() {
     if (isOpen(commons)) {
         $('#commons').addClass('label-success').removeClass('label-danger').text('Open');
@@ -61,6 +77,12 @@ function check() {
         $('#hill').addClass('label-success').removeClass('label-danger').text('Open');
     } else {
         $('#hill').addClass('label-danger').removeClass('label-success').text('Closed');
+    }
+
+    if (isOpen(mcclelland)) {
+        $('#mcclelland').addClass('label-success').removeClass('label-danger').text('Open');
+    } else {
+        $('#mcclelland').addClass('label-danger').removeClass('label-success').text('Closed');
     }
 }
 
