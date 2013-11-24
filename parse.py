@@ -25,7 +25,11 @@ def veg_listify(n):
 	output_list = raw.split("\n")
 	output_list = filter(None, output_list)
 	for i in output_list:
+<<<<<<< HEAD
 		if "vegetarian" not in i and "vegan" not in i:
+=======
+		if ("vegetarian" not in i) and ("vegan" not in i):
+>>>>>>> Fix vegetarian functionality
 			output_list.remove(i)
 	return output_list
 
@@ -70,6 +74,10 @@ def get_veg_meals(url):
 pp = pprint.PrettyPrinter(indent = 2)
 pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
 
+<<<<<<< HEAD
 # print all_dict["BRUNCH"]["Pizza"]
 
 # pp.pprint(veg_dict) "http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"
+=======
+pp.pprint(veg_dict)
+>>>>>>> Fix vegetarian functionality
