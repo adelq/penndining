@@ -108,4 +108,4 @@ function isOpen(hall) {
 }
 
 check();
-setInterval(check, 500);
+setInterval(check, 2000);
