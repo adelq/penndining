@@ -100,7 +100,7 @@ function check() {
             $('#commons-status').addClass('label-success').removeClass('label-danger').removeClass('label-warning').text('Open');
         }
     } else {
-        $('#commons').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
+        $('#commons-status').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
     }
 
     if (isOpen(hill)) {
