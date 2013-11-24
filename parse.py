@@ -25,7 +25,7 @@ def veg_listify(n):
 	output_list = raw.split("\n")
 	output_list = filter(None, output_list)
 	for i in output_list:
-		if "vegetarian" not in i and "vegan" not in i:
+		if ("vegetarian" not in i) and ("vegan" not in i):
 			output_list.remove(i)
 	return output_list
 
