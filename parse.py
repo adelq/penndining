@@ -1,22 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib2
-
-url = urllib2.urlopen("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/1920-commons/1920-menu.html")
-content = url.read()
-soup = BeautifulSoup(content)
-# print soup
-headers = soup.findAll("h4")
-# print headers
-table_content = soup.findAll("table", {"class": "contentpaneopen"})
-# content = table_content[1].findAll("li")
-
-lunch_raw = headers[0].next_sibling
-dinner_raw = headers[1].next_sibling
-brunch_raw = headers[2].next_sibling
-
-lunch = {}
-lunchcats = lunch_raw.findAll('strong')
-
+import pprint
 
 def listify(n):
 	"""
@@ -26,42 +10,72 @@ def listify(n):
 	"""
 	raw = n.next_sibling.next_sibling.getText()
 	output_list = raw.split("\n")
-	output_list.pop()
+	output_list = filter(None, output_list)
 	return output_list
 
 
+def veg_listify(n):
+	"""
+	vegetarian version of listify
+	returns the food options for each category of food
+	eg: for "Comfort" it might return
+	     ["onion rings", "bread", "cheese"]
+	"""
+	raw = n.next_sibling.next_sibling.getText()
+	output_list = raw.split("\n")
+	output_list = filter(None, output_list)
+	for i in output_list:
+		if ("vegetarian" not in i) and ("vegan" not in i):
+			output_list.remove(i)
+	return output_list
 
-bob = []
-for category in lunchcats:
-	categoryText = category.getText()
-	lunch[categoryText] = listify(category)
+def get_all_meals(url):
+	"""
+	Prints out a dictionary of all the meals.
+	"""
+	# Opens the source of the url and soupifies it		
+	url = urllib2.urlopen(url)
+	content = url.read()
+	soup = BeautifulSoup(content)
+	# Finds all tags with h4 (LUNCH, DINNER, etc)
+	headers_raw = soup.findAll("h4")
+	# Creates master vegetarian dictionary
+	all_dict = {}
+	# For loop to create veg_dict
+	for raw_header in headers_raw:
+		header_title = raw_header.getText()
+		temp = {}
+		# "strong" finds all the categories
+		for category in raw_header.next_sibling.findAll("strong"):
+			categoryText = category.getText()
+			temp[categoryText] = listify(category)
+		all_dict[header_title] = temp
+	return all_dict
 
-print lunch
+def get_veg_meals(url):
+	"""
+	Prints out a dictionary of all the vegetarian meals.
+	"""
 
+	# Opens the source of the url and soupifies it
+	url = urllib2.urlopen(url)
+	content = url.read()
+	soup = BeautifulSoup(content)
+	# Finds all tags with h4 (LUNCH, DINNER, etc)
+	headers_raw = soup.findAll("h4")
+	# Creates master vegetarian dictionary
+	veg_dict = {}
+	# For loop to create veg_dict
+	for raw_header in headers_raw:
+		header_title = raw_header.getText()
+		temp = {}
+		# "strong" finds all the categories
+		for category in raw_header.next_sibling.findAll("strong"):
+			categoryText = category.getText()
+			temp[categoryText] = veg_listify(category)
+		veg_dict[header_title] = temp
 
+# print all_dict
+pp = pprint.PrettyPrinter(indent = 4)
+pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
 
-
-
-
-
-
-
-
-
-
-# print dinner_raw
-
-
-# def dictify(ul):
-#     result = {}
-#     for i in ul.find_all("li", recursive=False):
-#         key = next(i.stripped_strings)
-#         ul = i.find("ul")
-#         if ul:
-#             result[key] = dictify(ul)
-#         else:
-#             result[key] = None
-#     return result
-
-# ul = soup.find("div", {"id": "accordion1"})
-# print ul
