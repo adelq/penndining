@@ -4,7 +4,7 @@ function Hours(name, startTime, endTime) {
     this.end = moment(endTime, 'HH:mm');
 
     this.isOpen = function() {
-	   return (moment().isAfter(this.start) && moment().isBefore(this.end));
+     return (moment().isAfter(this.start) && moment().isBefore(this.end));
     }
 }
 
@@ -45,7 +45,7 @@ hill = {
     new Hours("Dinner", "17:00", "19:00")
   ],
   "sunday": [
-    new Hours("Brunch", "2:00", "15:00"),
+    new Hours("Brunch", "11:00", "15:00"),
     new Hours("Dinner", "17:00", "20:00")
   ]
 }
@@ -108,4 +108,4 @@ function isOpen(hall) {
 }
 
 check();
-setInterval(check, 500);
+setInterval(check, 2000);
