@@ -1,0 +1,28 @@
+html {
+    background-image: url('https://www.sas.upenn.edu/tetlock/sites/www.sas.upenn.edu.tetlock/files/upenn.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+    padding-top: 20px;
+    background: none;
+}
+.jumbotron {
+    opacity: 0.95;
+    padding-top: 6%;
+}
+.jumbotron p {
+    padding-bottom: 20px;
+}
+.footer {
+    padding-top: 5px;
+    font-family: 'Rancho', cursive;
+    color: #444;
+    font-size: 30px;
+}
+.navbar-brand {
+    font-family: 'Open Sans', sans-serif;
+}
+.well {
+    opacity: 0.95;
+}

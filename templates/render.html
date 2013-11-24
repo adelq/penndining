@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="well">
+	  <div class="text-center">
+	<div class="btn-group" style="padding-bottom: 1%;">
+	  <button type="button" class="btn btn-default btn-lg active" id="shared">Shared Classes</button>
+	  <button type="button" class="btn btn-default btn-lg" id="free">Free Time</button>
+	</div>
+	<div id="calendar"></div>
+	  </div>
+	</div>
+  </div>
+{% endblock %}
+{% block scripts %}
+	<link rel="stylesheet" href="/static/css/fullcalendar.css">
+	<script type="text/javascript" src="/static/js/vendor/fullcalendar.min.js"></script>
+	<script>
+	  $(document).ready(function() {
+	  // page now ready
+	  shared = [{{ shared | safe }}]
+	  free = [{{ free | safe }}]
+
+		$('#free').click(function() {
+			$('#calendar').fullCalendar( 'removeEventSource', shared);
+			$('#calendar').fullCalendar( 'addEventSource', free);
+			$('#shared').removeClass('active');
+			$('#free').addClass('active');
+		})
+		$('#shared').click(function() {
+			$('#calendar').fullCalendar( 'removeEventSource', free);
+			$('#calendar').fullCalendar( 'addEventSource', shared);
+			$('#shared').addClass('active');
+			$('#free').removeClass('active');
+		})
+		$('#calendar').fullCalendar({
+		  header: false, // No top title header
+		  defaultView: 'agendaWeek', // Week view
+		  allDaySlot: false, // No all day events
+		  minTime: 7, // Calendar starts at 8am
+		  maxTime: 22, // Calendar goes up to 10pm
+		  weekends: false, 
+		  columnFormat: 'ddd', // hide number of day and month
+		  year: 2013,
+		  month: 8,
+		  date: 7,
+		  height: 670,
+		  events : [
+		  ]
+		})
+	  $('#calendar').fullCalendar( 'addEventSource', shared);
+	  });
+	</script>
+{% endblock %}
