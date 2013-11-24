@@ -4,7 +4,7 @@ function Hours(name, startTime, endTime) {
     this.end = moment(endTime, 'HH:mm');
 
     this.isOpen = function() {
-	   return (moment().isAfter(this.start) && moment().isBefore(this.end))
+	   return (moment().isAfter(this.start) && moment().isBefore(this.end));
     }
 }
 
@@ -50,18 +50,26 @@ hill = {
   ]
 }
 
-commons_is_open = false;
+function check() {
+    if (isOpen(commons)) {
+        $('#commons').addClass('label-success').removeClass('label-danger').text('Open');
+    } else {
+        $('#commons').addClass('label-danger').removeClass('label-success').text('Closed');
+    }
 
-if (isOpen(commons)) {
-    $('#commons').addClass('label-success').removeClass('label-danger').text('Open');
+    if (isOpen(hill)) {
+        $('#hill').addClass('label-success').removeClass('label-danger').text('Open');
+    } else {
+        $('#hill').addClass('label-danger').removeClass('label-success').text('Closed');
+    }
 }
 
 function openDay(day) {
     var open = false;
     for (var i = 0; i<day.length; i++) {
-        open = (open || day[i].isOpen())
+        open = (open || day[i].isOpen());
     }
-    return open
+    return open;
 }
 
 function isOpen(hall) {
@@ -76,3 +84,6 @@ function isOpen(hall) {
         return openDay(hall.weekdays);
     }
 }
+
+check();
+setInterval(check, 500);
