@@ -6,7 +6,7 @@ app = Flask(__name__)
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/')
+@app.route('/old')
 @app.route('/<hill>/<commons>/<kings>/<mcclelland>/')
 def index(hill=None, commons=None, kings=None, mcclelland=None):
 	# get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html")
@@ -16,7 +16,7 @@ def index(hill=None, commons=None, kings=None, mcclelland=None):
 	mcclelland = parse.get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/cafe-at-mcclelland/daily-menu.html")
 	return render_template('index.html', hill=hill, commons=commons, kings=kings, mcclelland=mcclelland)
 
-@app.route('/default')
+@app.route('/')
 @app.route('/<hill>/<commons>/<kings>/<mcclelland>/')
 def default(hill=None, commons=None, kings=None, mcclelland=None):
 	# get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html")
