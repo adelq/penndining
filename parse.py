@@ -1,21 +1,15 @@
 from bs4 import BeautifulSoup
 import urllib2
+import pprint
 
-url = urllib2.urlopen("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/1920-commons/1920-menu.html")
+url = urllib2.urlopen("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html")
 content = url.read()
 soup = BeautifulSoup(content)
 # print soup
-headers = soup.findAll("h4")
+headers_raw = soup.findAll("h4")
 # print headers
 table_content = soup.findAll("table", {"class": "contentpaneopen"})
 # content = table_content[1].findAll("li")
-
-lunch_raw = headers[0].next_sibling
-dinner_raw = headers[1].next_sibling
-brunch_raw = headers[2].next_sibling
-
-lunch = {}
-lunchcats = lunch_raw.findAll('strong')
 
 
 def listify(n):
@@ -26,42 +20,48 @@ def listify(n):
 	"""
 	raw = n.next_sibling.next_sibling.getText()
 	output_list = raw.split("\n")
-	output_list.pop()
+	output_list = filter(None, output_list)
 	return output_list
 
 
+def veg_listify(n):
+	"""
+	vegetarian version of listify
+	returns the food options for each category of food
+	eg: for "Comfort" it might return
+	     ["onion rings", "bread", "cheese"]
+	"""
+	raw = n.next_sibling.next_sibling.getText()
+	output_list = raw.split("\n")
+	output_list = filter(None, output_list)
+	for i in output_list:
+		if "vegetarian" not in i or "vegan" not in i:
+			output_list.remove(i)
+	return output_list
 
-bob = []
-for category in lunchcats:
-	categoryText = category.getText()
-	lunch[categoryText] = listify(category)
-
-print lunch
-
-
-
-
+all_dict = {}
+for raw_header in headers_raw:
+	header_title = raw_header.getText()
+	temp = {}
+	for category in raw_header.next_sibling.findAll("strong"):
+		categoryText = category.getText()
+		temp[categoryText] = listify(category)
+	all_dict[header_title] = temp
 
 
+veg_dict = {}
+for raw_header in headers_raw:
+	header_title = raw_header.getText()
+	temp = {}
+	for category in raw_header.next_sibling.findAll("strong"):
+		categoryText = category.getText()
+		temp[categoryText] = veg_listify(category)
+	veg_dict[header_title] = temp
 
+# print all_dict
+pp = pprint.PrettyPrinter(indent = 2)
+pp.pprint(all_dict)
 
+print all_dict["BRUNCH"]["Pizza"]
 
-
-
-
-# print dinner_raw
-
-
-# def dictify(ul):
-#     result = {}
-#     for i in ul.find_all("li", recursive=False):
-#         key = next(i.stripped_strings)
-#         ul = i.find("ul")
-#         if ul:
-#             result[key] = dictify(ul)
-#         else:
-#             result[key] = None
-#     return result
-
-# ul = soup.find("div", {"id": "accordion1"})
-# print ul
+pp.pprint(veg_dict)
