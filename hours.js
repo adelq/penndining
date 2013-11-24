@@ -67,13 +67,12 @@ function openDay(day) {
 function isOpen(hall) {
     var day = moment().day();
     if (day === 5) {
-        var meals = hall.friday;
+        return openDay(hall.friday);
     } else if (day === 6){
-        var meals = hall.saturday;
+        return openDay(hall.saturday);
     } else if (day === 0) {
-        var meals = hall.sunday;
-        console.log(openDay(hall.sunday));
+        return openDay(hall.sunday);
     } else {
-        var meals = hall.weekdays;
+        return openDay(hall.weekdays);
     }
 }
