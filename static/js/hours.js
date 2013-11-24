@@ -45,7 +45,7 @@ hill = {
     new Hours("Dinner", "17:00", "19:00")
   ],
   "sunday": [
-    new Hours("Brunch", "11:00", "15:00"),
+    new Hours("Brunch", "2:00", "15:00"),
     new Hours("Dinner", "17:00", "20:00")
   ]
 }
@@ -108,4 +108,4 @@ function isOpen(hall) {
 }
 
 check();
-setInterval(check, 2000);
+setInterval(check, 500);
