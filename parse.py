@@ -76,6 +76,5 @@ def get_veg_meals(url):
 		veg_dict[header_title] = temp
 
 # print all_dict
-pp = pprint.PrettyPrinter(indent = 4)
-pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
-
+# pp = pprint.PrettyPrinter(indent = 2)
+# pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
