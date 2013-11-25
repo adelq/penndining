@@ -3,18 +3,25 @@ function Hours(name, startTime, endTime) {
     this.start = moment(startTime, 'HH:mm');
     this.end = moment(endTime, 'HH:mm');
 
+    // Returns whether dining hall is open at given times
+    // @return boolean
     this.isOpen = function() {
      return (moment().isAfter(this.start) && moment().isBefore(this.end));
     }
 
+    // Returns the name of the dining hall if it is open, returns false otherwise
+    // @return string/boolean
     this.open = function() {
         if (this.isOpen) {
             return this.name;
         } else {
-            return "Closed";
+            return false;
         }
     }
 
+    // Returns whether dining hall is about to close
+    // Closing defined as 30 minutes (1800 seconds)
+    // @return boolean
     this.isClosing = function() {
         timeToClose = moment().diff(this.end, 'second');
         if (timeToClose > -1800 && timeToClose <= 0) {
@@ -24,16 +31,23 @@ function Hours(name, startTime, endTime) {
         }
     }
 
+    // Returns how much time is left until hall closes
+    // @return int (milliseconds)
     this.closingTime = function() {
         return moment().diff(this.end);
     }
 
+    // Returns human readable amount of time until hall closes
+    // @return string ("one minute")
     this.closingIn = function() {
         moment.lang('en');
         return moment.duration(moment().diff(this.end)).humanize();
     }
 }
 
+// JSON Objects representing each of the dining halls
+// Contributions welcome
+// TODO: Add more dining halls (Houston, King's Court, etc)
 commons = {
   "name": "1920 Commons",
   "weekdays": [
@@ -92,6 +106,9 @@ mcclelland = {
   ]
 }
 
+// Main DOM manipulation function
+// // Adds and removes classes to labels
+// // Changes text in the label
 function check() {
     if (isOpen(commons)) {
         if (isClosing(momentDay(commons))) {
@@ -124,6 +141,9 @@ function check() {
     }
 }
 
+// Returns boolean whether dining hall is open on given day
+// @param day: array of Hours()
+// @return boolean
 function openDay(day) {
     var open = false;
     for (var i = 0; i<day.length; i++) {
@@ -132,8 +152,11 @@ function openDay(day) {
     return open;
 }
 
+// Returns whether hall is currently open
+// @param hall: JSON object representing hall
+// @return boolean
 function isOpen(hall) {
-    var day = moment().day();
+    var day = moment().day();	// Current day of the week (int)
     if (day === 5) {
         return openDay(hall.friday);
     } else if (day === 6){
@@ -145,6 +168,9 @@ function isOpen(hall) {
     }
 }
 
+// Return whether dining hall is currently closing on given day
+// @param day: array of Hours()
+// @return boolean
 function isClosing(day) {
     for (var i = 0; i<day.length; i++) {
         if (day[i].isClosing()) {
@@ -154,6 +180,9 @@ function isClosing(day) {
     return false;
 }
 
+// Return whether hall is closing
+// Deprecated - not used in current iteration of code
+// @return boolean
 function timeToClose() {
     if (isOpen(hall)) {
         var day = moment().day();
@@ -172,8 +201,10 @@ function timeToClose() {
 }
 
 // Helpful for future refactoring
+// @param hall: JSON object representing hall
+// @return day: array of Hours()
 function momentDay(hall) {
-    var day = moment().day();
+    var day = moment().day();	// Current day of the week (int)
     if (day === 5) {
         return hall.friday;
     } else if (day === 6){
@@ -185,5 +216,6 @@ function momentDay(hall) {
     }
 }
 
-check();
-setInterval(check, 2000);
+// Running main code
+check();			// Run checking code once immediately
+setInterval(check, 2000);	// Run checking code every 2 seconds afterwards
