@@ -3,19 +3,18 @@
 
 # TEAM
 
-    Adel Qalieh -- Front End -- @adelq
+    Adel Qalieh -- Javascript Front End -- @adelq
     Prakhar Bhandari -- Python Backend -- @pbjr23
     David Lakata -- Flask -- @dlakata
 
 # THANKS
 
-    PennApps Organizers
-    Andrew Larkin
-    Kunal Malhotra
+    Penn Dining
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     Bootstrap
-    Normalize.css, jQuery, Modernizr, FullCalendar.js
-    Python, Flask
+    Normalize.css, jQuery, Moment.js 
+    Python, Flask, BeautifulSoup
+
