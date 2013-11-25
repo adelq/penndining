@@ -112,19 +112,39 @@ mcclelland = {
 function check() {
     if (isOpen(commons)) {
         if (isClosing(momentDay(commons))) {
-            $('#commons-status').addClass('label-warning').removeClass('label-success').removeClass('label-danger').text('Closing in ' + isClosing(momentDay(commons)));
+            $('#commons-status')
+		.addClass('label-warning')
+		.removeClass('label-success')
+		.removeClass('label-danger')
+		.text('Closing in ' + isClosing(momentDay(commons)));
         } else{
-            $('#commons-status').addClass('label-success').removeClass('label-danger').removeClass('label-warning').text('Open');
+            $('#commons-status')
+		.addClass('label-success')
+		.removeClass('label-danger')
+		.removeClass('label-warning')
+		.text('Open');
         }
     } else {
-        $('#commons-status').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
+        $('#commons-status')
+	    .addClass('label-danger')
+	    .removeClass('label-success')
+	    .removeClass('label-warning')
+	    .text('Closed');
     }
 
     if (isOpen(hill)) {
         if (isClosing(momentDay(hill))) {
-            $('#hill-status').addClass('label-warning').removeClass('label-danger').removeClass('label-success').text('Closing in ' + isClosing(momentDay(hill)));
+            $('#hill-status')
+		.addClass('label-warning')
+		.removeClass('label-danger')
+		.removeClass('label-success')
+		.text('Closing in ' + isClosing(momentDay(hill)));
         } else {
-            $('#hill-status').addClass('label-success').removeClass('label-danger').removeClass('label-warning').text('Open');
+            $('#hill-status')
+		.addClass('label-success')
+		.removeClass('label-danger')
+		.removeClass('label-warning')
+		.text('Open');
         }
     } else {
         $('#hill-status').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
@@ -132,12 +152,24 @@ function check() {
 
     if (isOpen(mcclelland)) {
         if (isClosing(momentDay(mcclelland))) {
-            $('#mcclelland-status').addClass('label-warning').removeClass('label-danger').removeClass('label-success').text('Closing in ' + isClosing(momentDay(mcclelland)));
+            $('#mcclelland-status')
+		.addClass('label-warning')
+		.removeClass('label-danger')
+		.removeClass('label-success')
+		.text('Closing in ' + isClosing(momentDay(mcclelland)));
         } else {
-            $('#mcclelland-status').addClass('label-success').removeClass('label-danger').removeClass('label-warning').text('Open');
+            $('#mcclelland-status')
+		.addClass('label-success')
+		.removeClass('label-danger')
+		.removeClass('label-warning')
+		.text('Open');
         }
     } else {
-        $('#mcclelland-status').addClass('label-danger').removeClass('label-success').removeClass('label-warning').text('Closed');
+        $('#mcclelland-status')
+	    .addClass('label-danger')
+	    .removeClass('label-success')
+	    .removeClass('label-warning')
+	    .text('Closed');
     }
 }
 
