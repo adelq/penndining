@@ -129,14 +129,14 @@ function check() {
     if (isOpen(commons)) {
         if (isClosing(momentDay(commons))) {
             $('#commons-status')
-		.addClass('label-warning')
-		.removeClass('label-success label-danger')
-		.text('Closing in ' + isClosing(momentDay(commons)));
+						.addClass('label-warning')
+						.removeClass('label-success label-danger')
+						.text('Closing in ' + isClosing(momentDay(commons)));
         } else{
             $('#commons-status')
-		.addClass('label-success')
-		.removeClass('label-warning label-danger')
-		.text('Open');
+						.addClass('label-success')
+						.removeClass('label-warning label-danger')
+						.text('Open');
         }
     } else {
         $('#commons-status')
@@ -148,14 +148,14 @@ function check() {
     if (isOpen(hill)) {
         if (isClosing(momentDay(hill))) {
             $('#hill-status')
-		.addClass('label-warning')
-		.removeClass('label-success label-danger')
-		.text('Closing in ' + isClosing(momentDay(hill)));
+						.addClass('label-warning')
+						.removeClass('label-success label-danger')
+						.text('Closing in ' + isClosing(momentDay(hill)));
         } else {
             $('#hill-status')
-		.addClass('label-success')
-		.removeClass('label-warning label-danger')
-		.text('Open');
+						.addClass('label-success')
+						.removeClass('label-warning label-danger')
+						.text('Open');
         }
     } else {
         $('#hill-status')
@@ -167,14 +167,14 @@ function check() {
     if (isOpen(kceh)) {
         if (isClosing(momentDay(kceh))) {
             $('#kceh-status')
-    .addClass('label-warning')
-    .removeClass('label-success label-danger')
-    .text('Closing in ' + isClosing(momentDay(kceh)));
+						.addClass('label-warning')
+						.removeClass('label-success label-danger')
+						.text('Closing in ' + isClosing(momentDay(kceh)));
         } else {
             $('#kceh-status')
-    .addClass('label-success')
-    .removeClass('label-warning label-danger')
-    .text('Open');
+						.addClass('label-success')
+						.removeClass('label-warning label-danger')
+						.text('Open');
         }
     } else {
         $('#kceh-status')
@@ -186,14 +186,14 @@ function check() {
     if (isOpen(mcclelland)) {
         if (isClosing(momentDay(mcclelland))) {
             $('#mcclelland-status')
-		.addClass('label-warning')
-		.removeClass('label-success label-danger')
-		.text('Closing in ' + isClosing(momentDay(mcclelland)));
+						.addClass('label-warning')
+						.removeClass('label-success label-danger')
+						.text('Closing in ' + isClosing(momentDay(mcclelland)));
         } else {
             $('#mcclelland-status')
-		.addClass('label-success')
-		.removeClass('label-warning label-danger')
-		.text('Open');
+						.addClass('label-success')
+						.removeClass('label-warning label-danger')
+						.text('Open');
         }
     } else {
         $('#mcclelland-status')
