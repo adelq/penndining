@@ -7,7 +7,7 @@ function Hours(name, startTime, endTime) {
     // @return boolean
     this.isOpen = function() {
      return (moment().isAfter(this.start) && moment().isBefore(this.end));
-    }
+    };
 
     // Returns the name of the dining hall if it is open, returns false otherwise
     // @return string/boolean
@@ -17,7 +17,7 @@ function Hours(name, startTime, endTime) {
         } else {
             return false;
         }
-    }
+    };
 
     // Returns whether dining hall is about to close
     // Closing defined as 30 minutes (1800 seconds)
@@ -29,20 +29,20 @@ function Hours(name, startTime, endTime) {
         } else {
             return false;
         }
-    }
+    };
 
     // Returns how much time is left until hall closes
     // @return int (milliseconds)
     this.closingTime = function() {
         return moment().diff(this.end);
-    }
+    };
 
     // Returns human readable amount of time until hall closes
     // @return string ("one minute")
     this.closingIn = function() {
         moment.lang('en');
         return moment.duration(moment().diff(this.end)).humanize();
-    }
+    };
 }
 
 // JSON Objects representing each of the dining halls
@@ -66,7 +66,7 @@ commons = {
     new Hours("Brunch", "11:00", "15:00"),
     new Hours("Dinner", "17:00", "20:00")
   ]
-}
+};
 
 hill = {
   "name": "Hill",
@@ -88,7 +88,7 @@ hill = {
     new Hours("Brunch", "11:00", "15:00"),
     new Hours("Dinner", "17:00", "20:00")
   ]
-}
+};
 
 mcclelland = {
   "name": "McClelland",
@@ -104,7 +104,7 @@ mcclelland = {
   "sunday": [
     new Hours("Meal", "12:00", "14:00")
   ]
-}
+};
 
 // Main DOM manipulation function
 // // Adds and removes classes to labels
@@ -124,9 +124,9 @@ function check() {
         }
     } else {
         $('#commons-status')
-	    .addClass('label-danger')
-	    .removeClass('label-success label-warning')
-	    .text('Closed');
+        .addClass('label-danger')
+        .removeClass('label-success label-warning')
+        .text('Closed');
     }
 
     if (isOpen(hill)) {
@@ -143,9 +143,9 @@ function check() {
         }
     } else {
         $('#hill-status')
-	    .addClass('label-danger')
-	    .removeClass('label-success label-warning')
-	    .text('Closed');
+        .addClass('label-danger')
+        .removeClass('label-success label-warning')
+        .text('Closed');
     }
 
     if (isOpen(mcclelland)) {
@@ -162,9 +162,9 @@ function check() {
         }
     } else {
         $('#mcclelland-status')
-	    .addClass('label-danger')
-	    .removeClass('label-success label-warning')
-	    .text('Closed');
+        .addClass('label-danger')
+        .removeClass('label-success label-warning')
+        .text('Closed');
     }
 }
 
@@ -221,9 +221,9 @@ function timeToClose() {
             return isClosing(hall.sunday);
         } else {
             return isClosing(hall.weekdays);
-        }  
+        }
     } else {
-        return "Closed"
+        return "Closed";
     }
 }
 
