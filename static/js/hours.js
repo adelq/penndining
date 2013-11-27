@@ -68,6 +68,22 @@ commons = {
   ]
 };
 
+houston = {
+  "name": "Houston",
+  "weekdays": [
+    new Hours("Meal", "11:00", "20:00")
+  ],
+  "friday": [
+    new Hours("Meal", "11:00", "19:00")
+  ],
+  "saturday": [
+    new Hours("Meal", "11:00", "16:00")
+  ],
+  "sunday": [
+    new Hours("Meal", "12:00", "19:00")
+  ]
+};
+
 hill = {
   "name": "Hill",
   "weekdays": [
@@ -159,6 +175,25 @@ function check() {
         }
     } else {
         $('#hill-status')
+        .addClass('label-danger')
+        .removeClass('label-success label-warning')
+        .text('Closed');
+    }
+
+    if (isOpen(houston)) {
+        if (isClosing(momentDay(houston))) {
+            $('#houston-status')
+                        .addClass('label-warning')
+                        .removeClass('label-success label-danger')
+                        .text('Closing in ' + isClosing(momentDay(houston)));
+        } else {
+            $('#houston-status')
+            .addClass('label-success')
+            .removeClass('label-warning label-danger')
+            .text('Open');  
+        }
+    } else {
+        $('#houston-status')
         .addClass('label-danger')
         .removeClass('label-success label-warning')
         .text('Closed');
