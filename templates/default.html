@@ -24,6 +24,12 @@
         .container {
           background-color: #fff;
         }
+        h3 {
+          margin-top: 10px;
+        }
+        .list-group-item {
+          padding: 10px;
+        }
         </style>
 
         <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf" rel="stylesheet" type=""
@@ -33,30 +39,44 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
                 <div class="container">
-          <h1 class="text-center" style="font-size:48px;">Penn Dining</h1>
+          <h1 class="text-center">Penn Dining</h1>
           <ul class="list-group">
             <a href="#commons">
               <li class="list-group-item">
-              <span id="commons-status" class="label label-danger">Closed</span>
-              <h2>1920 Commons</h2>
+              <h3>
+                1920 Commons
+                <span id="commons-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
             <a href="#hill">
               <li class="list-group-item">
-              <span id="hill-status" class="label label-danger">Closed</span>
-              <h2>Hill</h2>
+              <h3>
+                Hill
+                <span id="hill-status" class="label label-danger pull-right">Closed</span>
+              </h3>
+            </li>
+            </a>
+            <a href="#kings">
+              <li class="list-group-item">
+              <h3>
+                King's Court
+                <span id="kceh-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
             <a href="#mcclelland">
               <li class="list-group-item">
-              <span id="mcclelland-status" class="label label-danger">Closed</span>
-              <h2>McClelland</h2>
+              <h3>
+                McClelland
+                <span id="mcclelland-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
           </ul>
         </div>
 <div class="container">
-	<h1 class="logotype">Penn Dining</h1>
+	<h2 class="logotype text-center">Menu</h2>
     <div class="well">
     <h2 id="hill"> Hill </h2>
     {% for x in hill %}

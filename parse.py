@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import pprint
 
 def listify(n):
@@ -10,7 +10,7 @@ def listify(n):
 	"""
 	raw = n.next_sibling.next_sibling.getText()
 	output_list = raw.split("\n")
-	output_list = filter(None, output_list)
+	output_list = [_f for _f in output_list if _f]
 	return output_list
 
 
@@ -23,7 +23,7 @@ def veg_listify(n):
 	"""
 	raw = n.next_sibling.next_sibling.getText()
 	output_list = raw.split("\n")
-	output_list = filter(None, output_list)
+	output_list = [_f for _f in output_list if _f]
 	for i in output_list:
 		if ("vegetarian" not in i) and ("vegan" not in i):
 			output_list.remove(i)
@@ -34,7 +34,7 @@ def get_all_meals(url):
 	Prints out a dictionary of all the meals.
 	"""
 	# Opens the source of the url and soupifies it		
-	url = urllib2.urlopen(url)
+	url = urllib.request.urlopen(url)
 	content = url.read()
 	soup = BeautifulSoup(content)
 	# Finds all tags with h4 (LUNCH, DINNER, etc)
@@ -58,7 +58,7 @@ def get_veg_meals(url):
 	"""
 
 	# Opens the source of the url and soupifies it
-	url = urllib2.urlopen(url)
+	url = urllib.request.urlopen(url)
 	content = url.read()
 	soup = BeautifulSoup(content)
 	# Finds all tags with h4 (LUNCH, DINNER, etc)
