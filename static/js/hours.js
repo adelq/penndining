@@ -90,6 +90,22 @@ hill = {
   ]
 };
 
+kceh = {
+    "name": "King's Court",
+    "weekdays": [
+      new Hours("Breakfast", "08:30", "10:30"),
+      new Hours("Lunch", "11:00", "14:00"),
+      new Hours("Dinner", "17:00", "20:00")
+    ],
+    "friday": [
+      new Hours("Breakfast", "08:30", "10:30"),
+      new Hours("Lunch", "11:00", "14:00"),
+      new Hours("Dinner", "17:00", "20:00")
+    ],
+    "saturday": [],           // Might be problematic
+    "sunday": []
+};
+
 mcclelland = {
   "name": "McClelland",
   "weekdays": [
@@ -143,6 +159,25 @@ function check() {
         }
     } else {
         $('#hill-status')
+        .addClass('label-danger')
+        .removeClass('label-success label-warning')
+        .text('Closed');
+    }
+
+    if (isOpen(kceh)) {
+        if (isClosing(momentDay(kceh))) {
+            $('#kceh-status')
+    .addClass('label-warning')
+    .removeClass('label-success label-danger')
+    .text('Closing in ' + isClosing(momentDay(kceh)));
+        } else {
+            $('#kceh-status')
+    .addClass('label-success')
+    .removeClass('label-warning label-danger')
+    .text('Open');
+        }
+    } else {
+        $('#kceh-status')
         .addClass('label-danger')
         .removeClass('label-success label-warning')
         .text('Closed');
