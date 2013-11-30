@@ -13,16 +13,37 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/cyborg/bootstrap.min.css">
         <!-- <link rel="stylesheet" href="/static/css/main.css"> -->
-	      <link rel="stylesheet" href="/static/css/bootstrap.css">
-	      <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
-	<!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+	      <!-- <link rel="stylesheet" href="/static/css/bootstrap.css"> -->
+	      <!-- <link rel="stylesheet" href="/static/css/bootstrap-theme.css"> -->
+        <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
         <style>
-        body {
-            background-image: url(http://subtlepatterns.com/patterns/escheresque_ste.png);
-        }
         .container {
-          background-color: #fff;
+          max-width: 750px;
+        }
+        .logotype {
+          font-family: 'Lato', sans-serif;
+          font-size: 48px;
+        }
+        h3 {
+          margin-top: 10px;
+        }
+        .list-group a {
+          text-decoration: none;
+        }
+        .list-group-item {
+          padding: 10px;
+          background-color: #151515;
+          border-color: #030303;
+        }
+        .list-group-item:hover {
+          background-color: #111;
+          border-color: #222;
         }
         </style>
 
@@ -32,31 +53,53 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-                <div class="container">
-          <h1 class="text-center" style="font-size:48px;">Penn Dining</h1>
+        <div class="container">
+          <h1 class="logotype text-center">Penn Dining</h1>
           <ul class="list-group">
             <a href="#commons">
               <li class="list-group-item">
-              <span id="commons-status" class="label label-danger">Closed</span>
-              <h2>1920 Commons</h2>
+              <h3>
+                1920 Commons
+                <span id="commons-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
             <a href="#hill">
               <li class="list-group-item">
-              <span id="hill-status" class="label label-danger">Closed</span>
-              <h2>Hill</h2>
+              <h3>
+                Hill
+                <span id="hill-status" class="label label-danger pull-right">Closed</span>
+              </h3>
+            </li>
+            </a>
+            <a href="#houston">
+              <li class="list-group-item">
+              <h3>
+                Houston
+                <span id="houston-status" class="label label-danger pull-right">Closed</span>
+              </h3>
+            </li>
+            </a>
+            <a href="#kings">
+              <li class="list-group-item">
+              <h3>
+                King's Court
+                <span id="kceh-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
             <a href="#mcclelland">
               <li class="list-group-item">
-              <span id="mcclelland-status" class="label label-danger">Closed</span>
-              <h2>McClelland</h2>
+              <h3>
+                McClelland
+                <span id="mcclelland-status" class="label label-danger pull-right">Closed</span>
+              </h3>
             </li>
             </a>
           </ul>
         </div>
 <div class="container">
-	<h1 class="logotype">Penn Dining</h1>
+	<h2 class="text-center">Menu</h2>
     <div class="well">
     <h2 id="hill"> Hill </h2>
     {% for x in hill %}

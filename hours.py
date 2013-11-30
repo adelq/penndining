@@ -24,32 +24,32 @@ def is_open(hall):
     ctm = current.time()
     if current.weekday() == 4:
         if ctm > time(11) and ctm < time(14):
-            print "Lunch"
+            print("Lunch")
         elif ctm > time(17) and ctm < time(19,30):
-            print "Dinner"
+            print("Dinner")
         else:
-            print "Closed"
+            print("Closed")
     elif current.weekday() == 5:
         if ctm > time(11) and ctm < time(15):
-            print "Brunch"
+            print("Brunch")
         elif ctm > time(17) and ctm < time(19):
-            print "Dinner"
+            print("Dinner")
         else:
-            print "Closed"
+            print("Closed")
     elif current.weekday() == 6:
         if ctm > time(11) and ctm < time(15):
-            print "Brunch"
+            print("Brunch")
         elif ctm > time(17) and ctm < time(20):
-            print "Dinner"
+            print("Dinner")
         else:
-            print "Closed"
+            print("Closed")
     else:
         if ctm > time(11) and ctm < time(14):
-            print "Lunch"
+            print("Lunch")
         elif ctm > time(17) and ctm < time(21):
-            print "Dinner"
+            print("Dinner")
         else:
-            print "Closed"
+            print("Closed")
 
 def time_to_close(hall):
     """
