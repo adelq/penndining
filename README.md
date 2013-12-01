@@ -6,16 +6,16 @@ Note: Your use of PennDining data may or may not be allowed. Use at your risk.
 
 Team
 ----
-Adel Qalieh -- Javascript -- @adelq
-Prakhar Bhandari -- Python Backend -- @pbjr23
-David Lakata -- Flask templating -- @dlakata
+Adel Qalieh -- Javascript -- @adelq  
+Prakhar Bhandari -- Python Backend -- @pbjr23  
+David Lakata -- Flask templating -- @dlakata  
 
 Technology
 ----------
-HTML5, CSS3
-Bootstrap
-Normalize.css, jQuery, Moment.js
-Python, Flask, BeautifulSoup
+HTML5, CSS3  
+Bootstrap  
+Normalize.css, jQuery, Moment.js  
+Python, Flask, BeautifulSoup  
 
 Getting Started
 ---------------
