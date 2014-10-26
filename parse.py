@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import grequests
 
 
 def listify(n):
@@ -38,6 +39,9 @@ def get_all_meals(url):
     content = requests.get(url)
     return parse_content(content)
 
+def get_all_meals_concurrent(urls):
+    rs = (grequests.get(u) for u in urls)
+    return list(map(parse_content, grequests.map(rs)))
 
 def parse_content(content):
     """Parsing code shared by get_all_meals and get_all_meals_concurrent"""

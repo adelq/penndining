@@ -23,8 +23,5 @@ def index(hill=None, commons=None, kings=None, mcclelland=None):
 @bpp.route('/')
 @bpp.route('/<hill>/<commons>/<kings>/<mcclelland>/')
 def default(hill=None, commons=None, kings=None, mcclelland=None):
-    hill = parse.get_all_meals(HALL_URLS[0])
-    commons = parse.get_all_meals(HALL_URLS[1])
-    kings = parse.get_all_meals(HALL_URLS[2])
-    mcclelland = parse.get_all_meals(HALL_URLS[3])
+    hill, commons, kings, mcclelland = parse.get_all_meals_concurrent(HALL_URLS)
     return render_template('default.html', hill=hill, commons=commons, kings=kings, mcclelland=mcclelland)
