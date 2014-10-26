@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib.request, urllib.error, urllib.parse
-import pprint
+
 
 def listify(n):
 	"""
@@ -29,6 +29,7 @@ def veg_listify(n):
 			output_list.remove(i)
 	return output_list
 
+
 def get_all_meals(url):
 	"""
 	Prints out a dictionary of all the meals.
@@ -52,6 +53,7 @@ def get_all_meals(url):
 		all_dict[header_title] = temp
 	return all_dict
 
+
 def get_veg_meals(url):
 	"""
 	Prints out a dictionary of all the vegetarian meals.
@@ -74,7 +76,3 @@ def get_veg_meals(url):
 			categoryText = category.getText()
 			temp[categoryText] = veg_listify(category)
 		veg_dict[header_title] = temp
-
-# print all_dict
-# pp = pprint.PrettyPrinter(indent = 2)
-# pp.pprint(get_all_meals("http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html"))
