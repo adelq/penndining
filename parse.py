@@ -39,6 +39,11 @@ def get_all_meals(url):
     # Opens the source of the url and soupifies it
     url = urllib.request.urlopen(url)
     content = url.read()
+    return parse_content(content)
+
+
+def parse_content(content):
+    """Parsing code shared by get_all_meals and get_all_meals_concurrent"""
     soup = BeautifulSoup(content)
     # Finds all tags with h4 (LUNCH, DINNER, etc)
     headers_raw = soup.findAll("h4")
