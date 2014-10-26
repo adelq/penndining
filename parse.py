@@ -1,7 +1,5 @@
 from bs4 import BeautifulSoup
-import urllib.request
-import urllib.error
-import urllib.parse
+import requests
 
 
 def listify(n):
@@ -37,14 +35,13 @@ def get_all_meals(url):
     Prints out a dictionary of all the meals.
     """
     # Opens the source of the url and soupifies it
-    url = urllib.request.urlopen(url)
-    content = url.read()
+    content = requests.get(url)
     return parse_content(content)
 
 
 def parse_content(content):
     """Parsing code shared by get_all_meals and get_all_meals_concurrent"""
-    soup = BeautifulSoup(content)
+    soup = BeautifulSoup(content.text)
     # Finds all tags with h4 (LUNCH, DINNER, etc)
     headers_raw = soup.findAll("h4")
     # Creates master vegetarian dictionary
@@ -67,8 +64,8 @@ def get_veg_meals(url):
     """
 
     # Opens the source of the url and soupifies it
-    url = urllib.request.urlopen(url)
-    content = url.read()
+    url = requests.get(url)
+    content = url.text
     soup = BeautifulSoup(content)
     # Finds all tags with h4 (LUNCH, DINNER, etc)
     headers_raw = soup.findAll("h4")
